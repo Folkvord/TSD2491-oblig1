@@ -1,9 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using TSD2491_oblig1_260562;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDbContext<DbContextClass>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DbContextClass")));
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
